@@ -1,6 +1,6 @@
 EM DESENVOLVIMENTO :-)
 
-Api do projeto Family pizzeria
+Api criada em NODE.JS par o projeto Family pizzeria
 
 Criação de rotas para adição de usuarios, pizzas e bebidas.
 
