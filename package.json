@@ -1,0 +1,29 @@
+{
+  "name": "api-pizzeria",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engine":{
+    "node":"14.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "startdev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-validator": "^6.12.1",
+    "jimp": "^0.16.1",
+    "mongoose": "^5.13.7",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
