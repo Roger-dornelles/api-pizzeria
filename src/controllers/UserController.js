@@ -19,7 +19,7 @@ module.exports = {
 
         const user = await User.findOne({email:data.email});
         if(user){
-            res.json({error:{msg:'E-mail já existe'}});
+            res.json({error:'E-mail já existe'});
             return;
         };
 
