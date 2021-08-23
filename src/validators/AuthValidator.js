@@ -13,7 +13,7 @@ module.exports = {
         email:{
             isEmail:true,
             normalizeEmail:true,
-            errorMessage: 'E-mail obrigatorio'
+            errorMessage: 'Digite um E-mail valido'
         },
         address:{
             trim:true,

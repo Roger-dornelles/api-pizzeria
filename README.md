@@ -1,5 +1,7 @@
 EM DESENVOLVIMENTO :-)
 
+Hospedado no Heroku: URL: https://api-pizzeriaa.herokuapp.com/
+
 Api criada em NODE.JS para o projeto Family pizzeria
 
 Criação de rotas para adição de usuarios, pizzas e bebidas.
