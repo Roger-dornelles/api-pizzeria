@@ -57,7 +57,7 @@ module.exports = {
             res.json({email:{msg:'E-mail invalido'}});
             return;
         }
-  
+
         const userPass = await bcrypt.compare(data.password,user.password);
         if(!userPass){
             res.json({password:{msg:'Senha invalida'}});
@@ -71,7 +71,7 @@ module.exports = {
 
         user.token = token;
         await user.save()
-        res.json({token});
+        res.json(token);
 
     },
     //editar informações
