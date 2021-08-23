@@ -38,7 +38,7 @@ module.exports = {
         });
 
         await newUser.save();
-        res.json({token});
+        res.json(token);
 
     },
     //login de usuario
