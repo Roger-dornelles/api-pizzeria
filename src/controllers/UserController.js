@@ -54,15 +54,15 @@ module.exports = {
 
         let user = await User.findOne({email:data.email});
         if(!user){
-            res.json({email:{msg:'E-mail invalido'}});
+            res.json({error:{email:{msg:'E-mail invalido'}}});
             return;
         }
 
         const userPass = await bcrypt.compare(data.password,user.password);
         if(!userPass){
-            res.json({password:{msg:'Senha invalida'}});
+            res.json({error:{password:{msg:'Senha invalida'}}});
             return;
-        }
+        };
 
         
 
