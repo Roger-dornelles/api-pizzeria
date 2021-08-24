@@ -71,7 +71,7 @@ module.exports = {
 
         user.token = token;
         await user.save()
-        res.json(token);
+        res.json({token});
 
     },
     //editar informações
