@@ -19,7 +19,7 @@ module.exports = {
 
         const user = await User.findOne({email:data.email});
         if(user){
-            res.json({error:'E-mail já existe'});
+            res.json({error:{msg:'E-mail já existe'}});
             return;
         };
 
@@ -38,7 +38,7 @@ module.exports = {
         });
 
         await newUser.save();
-        res.json(token);
+        res.json({token});
 
     },
     //login de usuario
