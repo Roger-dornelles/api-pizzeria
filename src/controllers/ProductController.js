@@ -63,7 +63,7 @@ module.exports = {
     searchPizza: async (req,res) => {
         let pizzas = await Pizzas.find();
 
-        res.json(pizzas);
+        res.json({pizzas});
     },
     //editar pizza
     editActionPizza: async (req, res) => {
