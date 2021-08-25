@@ -17,7 +17,7 @@ const addImage = async(buffer)=>{
 module.exports = {
     //adicionar pizza
     addPizza: async (req,res)=>{
-        let { name, description, price, token } = req.body;
+        let { name, description, price,token } = req.body;
 
         const user = await User.findOne({token})
         if(!user){
@@ -28,7 +28,7 @@ module.exports = {
         
         let pizza = new Pizzas();
 
-        if(!name || !description || !price){
+        if(!name || !description || !price ){
             res.json({ error:'Preencha todos os campos.'});
             return;
         }
@@ -47,13 +47,14 @@ module.exports = {
         };
 
         if(req.files && req.files.image){
-        
+            
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                pizza.image.push({url});
+                    pizza.image.push({url});
             }
-        
+            
         };
+
 
         const add = await pizza.save();
         res.json({add});
@@ -62,7 +63,7 @@ module.exports = {
     searchPizza: async (req,res) => {
         let pizzas = await Pizzas.find();
 
-        res.json({pizzas});
+        res.json(pizzas);
     },
     //editar pizza
     editActionPizza: async (req, res) => {
