@@ -50,7 +50,7 @@ module.exports = {
             
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                    pizza.image.push(`${process.env.BASE}/media/${url}`);
+                    pizza.image.push(`${process.env.BASE}/public/images/${url}`);
             }
             
         };
@@ -65,6 +65,7 @@ module.exports = {
 
         res.json({pizzas});
     },
+
     //editar pizza
     editActionPizza: async (req, res) => {
         let id = req.body.id;
