@@ -17,7 +17,7 @@ const addImage = async(buffer)=>{
 module.exports = {
     //adicionar pizza
     addPizza: async (req,res)=>{
-        let { name, description, price,token } = req.body;
+        let { name, description, price, token } = req.body;
 
         const user = await User.findOne({token})
         if(!user){
@@ -140,9 +140,18 @@ module.exports = {
         }
 
         if(req.files && req.files.image){
-            let url = await addImage(req.files.image.data);
-            drink.image.push({url});
+            
+            if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
+                let url = await addImage(req.files.image.data);
+                drink.image.push(`${process.env.BASE}/media/${url}`);
+            }
+            
         };
+
+        ///if(req.files && req.files.image){
+       //     let url = await addImage(req.files.image.data);
+        //    drink.image.push(`${process.env.BASE}/media/${url}`);
+       // };
 
         let add = await drink.save();
         
