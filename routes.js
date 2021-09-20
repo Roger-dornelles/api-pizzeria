@@ -49,6 +49,6 @@ router.get('/drinks/search', ProductController.searchDrinks);
 router.put('/drinks/adit', Auth.private,ProductValidator.editActionDrinks, ProductController.editActionDrink);
 
 //deletar uma bebida
-router.delete('/drinks/delete', Auth.private, ProductController.delete);
+router.delete('/drink/delete', Auth.private, ProductController.delete);
 
 module.exports = router;
