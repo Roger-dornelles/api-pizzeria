@@ -204,8 +204,8 @@ module.exports = {
             return;
         }
 
-        const id = req.query._id;
-        await Drinks.deleteOne({id});
-        await res.json('Deletado com sucesso');
+        const _id = req.query._id;
+        await Pizzas.findByIdAndDelete({_id});
+        await res.json('Deletado com sucesso.')
     }
 }
