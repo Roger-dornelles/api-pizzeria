@@ -46,7 +46,7 @@ router.post('/drinks/add',Auth.private, ProductController.addDrinks);
 router.get('/drinks/search', ProductController.searchDrinks);
 
 //editar bebida
-router.put('/drinks/adit', Auth.private,ProductValidator.editActionDrinks, ProductController.editActionDrink);
+router.post('/drinks/adit', Auth.private,ProductValidator.editActionDrinks, ProductController.editActionDrink);
 
 //deletar uma bebida
 router.delete('/drink/delete', Auth.private, ProductController.delete);
