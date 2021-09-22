@@ -185,7 +185,7 @@ module.exports = {
             updates.image = `${process.env.BASE}/media/${url}`;
         };
 
-        await Drinks.findOneAndUpdate(id,{$set:updates});
+        await Drinks.findByIdAndUpdate(id,{$set:updates});
         res.json('Atualizado com sucesso');
 
 
