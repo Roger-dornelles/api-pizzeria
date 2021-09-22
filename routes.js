@@ -33,7 +33,7 @@ router.post('/pizzas/add', Auth.private, ProductController.addPizza);
 router.get('/pizzas/search',ProductController.searchPizza);
 
 //editar pizzas
-router.put('/pizza/edit',Auth.private,ProductValidator.editActionPizza, ProductController.editActionPizza);
+router.post('/pizza/edit',Auth.private,ProductValidator.editActionPizza, ProductController.editActionPizza);
 
 //deletar uma pizza
 router.delete('/pizza/delete', Auth.private, ProductController.deleteActionPizza)
