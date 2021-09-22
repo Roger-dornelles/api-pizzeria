@@ -89,9 +89,9 @@ module.exports = {
         if(req.files && req.files.image){
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                updates.image.push({url});
-            }
-        };
+                updates.image = `${process.env.BASE}/media/${url}`;
+            };
+        }
         await Pizzas.findByIdAndUpdate(id,{$set:updates});
         res.json('Atualizado com sucesso')
 
