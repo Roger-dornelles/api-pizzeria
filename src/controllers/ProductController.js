@@ -148,11 +148,6 @@ module.exports = {
             
         };
 
-        ///if(req.files && req.files.image){
-       //     let url = await addImage(req.files.image.data);
-        //    drink.image.push(`${process.env.BASE}/media/${url}`);
-       // };
-
         let add = await drink.save();
         
         res.json({add});
@@ -187,7 +182,7 @@ module.exports = {
 
         if(req.files && req.files.image){
             let url = await addImage(req.files.image.data);
-            updates.image.push({url});
+            updates.image = `${process.env.BASE}/media/${url}`;
         };
 
         await Drinks.findOneAndUpdate(id,{$set:updates});
