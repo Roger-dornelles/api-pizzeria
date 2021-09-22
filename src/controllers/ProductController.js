@@ -171,11 +171,11 @@ module.exports = {
         let {name,price}= req.body;
         let updates= {};
 
-        if(name != ''){
-            updates.name = name;
+        if(name){
+            updates.name = name
         }
 
-        if(price != ''){
+        if(price){
             price = price.replace(',','.');
             updates.price = parseFloat(price);
         }
