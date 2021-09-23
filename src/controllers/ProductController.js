@@ -50,7 +50,7 @@ module.exports = {
             
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                    pizza.image.push(`${process.env.BASE}/media/${url}`);
+                    pizza.image.push(`/public/media/${url}`);
             }
             
         };
