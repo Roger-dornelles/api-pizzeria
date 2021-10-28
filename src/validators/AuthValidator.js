@@ -13,7 +13,7 @@ module.exports = {
         email:{
             isEmail:true,
             normalizeEmail:true,
-            errorMessage: 'E-mail obrigatorio'
+            errorMessage: 'Digite um E-mail valido'
         },
         address:{
             trim:true,
@@ -45,12 +45,12 @@ module.exports = {
             isEmail:true,
             normalizeEmail:true,
             notEmpty:true,
-            errorMessage:'Email Obrigatorio' 
+            errorMessage:'Digite um E-mail valido' 
         },
         password:{
             trim:true,
             notEmpty:true,
-            errorMessage:'Senha Obrigatorio'
+            errorMessage:'Senha invalida'
         }
     }),
     editAction:checkSchema({

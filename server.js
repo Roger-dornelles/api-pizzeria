@@ -26,5 +26,5 @@ server.use(express.static(__dirname+'/public'));
 server.use('/',routes);
 
 server.listen(process.env.PORT,()=>{
-    console.log('funcionando: ',process.env.PORT);
+    console.log('funcionando: ',process.env.BASE);
 })
