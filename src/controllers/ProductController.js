@@ -143,7 +143,7 @@ module.exports = {
             
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                drink.image.push({url});
+                drink.image.push(`${process.env.BASE_URL}/${url}`);
             }
             
         };
