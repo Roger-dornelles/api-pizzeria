@@ -5,7 +5,7 @@ const { v4:uuid } = require('uuid');
 //models
 const Pizzas = require('../models/Pizzas');
 const User = require('../models/User');
-const Drinks = require('../models/Drinks');
+const Drinks = require('./models/Drinks');
 
 // criar um nome a imagem e salvar (./public/media)
 const addImage = async(buffer)=>{
