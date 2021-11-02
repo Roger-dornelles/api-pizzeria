@@ -11,7 +11,7 @@ const Drinks = require('./models/Drinks');
 const addImage = async(buffer)=>{
     let newName = `${uuid()}.jpg`;
     let imgTemp = await jimp.read(buffer);
-    imgTemp.cover(500,500).quality(80).write(`../public/media/${newName}`);
+    imgTemp.cover(500,500).quality(80).write(`./public/media/${newName}`);
     return newName;
 }
 module.exports = {
