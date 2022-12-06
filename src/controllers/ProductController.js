@@ -5,7 +5,7 @@ const { v4:uuid } = require('uuid');
 //models
 const Pizzas = require('../models/Pizzas');
 const User = require('../models/User');
-const Drinks = require('../models/Drinks');
+const Drinks = require('./models/Drinks');
 
 // criar um nome a imagem e salvar (./public/media)
 const addImage = async(buffer)=>{
@@ -28,7 +28,7 @@ module.exports = {
         
         let pizza = new Pizzas();
 
-        if(!name || !description || !price){
+        if(!name || !description || !price ){
             res.json({ error:'Preencha todos os campos.'});
             return;
         }
@@ -47,13 +47,14 @@ module.exports = {
         };
 
         if(req.files && req.files.image){
-        
+            
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                pizza.image.push({url});
+                    pizza.image.push(`${process.env.BASE_URL}/media/${url}`);
             }
-        
+            
         };
+
 
         const add = await pizza.save();
         res.json({add});
@@ -64,6 +65,7 @@ module.exports = {
 
         res.json({pizzas});
     },
+
     //editar pizza
     editActionPizza: async (req, res) => {
         let id = req.body.id;
@@ -87,9 +89,9 @@ module.exports = {
         if(req.files && req.files.image){
             if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
                 let url = await addImage(req.files.image.data);
-                updates.image.push({url});
-            }
-        };
+                updates.image = `${process.env.BASE_URL}/media/${url}`;
+            };
+        }
         await Pizzas.findByIdAndUpdate(id,{$set:updates});
         res.json('Atualizado com sucesso')
 
@@ -103,8 +105,8 @@ module.exports = {
             return;
         };
 
-        const id = req.query._id;
-        await Pizzas.deleteOne({id});
+        const _id = req.query._id;
+        await Pizzas.findByIdAndDelete({_id});
         await res.json('Deletado com sucesso.')
     },
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -138,8 +140,12 @@ module.exports = {
         }
 
         if(req.files && req.files.image){
-            let url = await addImage(req.files.image.data);
-            drink.image.push({url});
+            
+            if(['image/jpeg', 'image/jpg', 'image/png'].includes(req.files.image.mimetype)){
+                let url = await addImage(req.files.image.data);
+                drink.image.push(`${process.env.BASE_URL}/media/${url}`);
+            }
+            
         };
 
         let add = await drink.save();
@@ -165,21 +171,21 @@ module.exports = {
         let {name,price}= req.body;
         let updates= {};
 
-        if(name != ''){
-            updates.name = name;
+        if(name){
+            updates.name = name
         }
 
-        if(price != ''){
+        if(price){
             price = price.replace(',','.');
             updates.price = parseFloat(price);
         }
 
         if(req.files && req.files.image){
             let url = await addImage(req.files.image.data);
-            updates.image.push({url});
+            updates.image = `${process.env.BASE_URL}/media/${url}`;
         };
 
-        await Drinks.findOneAndUpdate(id,{$set:updates});
+        await Drinks.findByIdAndUpdate(id,{$set:updates});
         res.json('Atualizado com sucesso');
 
 
@@ -193,8 +199,8 @@ module.exports = {
             return;
         }
 
-        const id = req.query._id;
-        await Drinks.deleteOne({id});
-        await res.json('Deletado com sucesso');
+        const _id = req.query._id;
+        await Drinks.findByIdAndDelete({_id});
+        await res.json('Deletado com sucesso.')
     }
 }

@@ -10,7 +10,7 @@ module.exports = {
 
         const errors = validationResult(req);
         if(!errors.isEmpty()){
-            res.json({error:errors.mapped(req)});
+            res.json({error:errors.mapped()});
             return;
         };
 
@@ -19,7 +19,7 @@ module.exports = {
 
         const user = await User.findOne({email:data.email});
         if(user){
-            res.json({email:{msg:'E-mail já existe'}});
+            res.json({error:{email:{msg:'E-mail já cadastrado!'}}});
             return;
         };
 
@@ -54,15 +54,15 @@ module.exports = {
 
         let user = await User.findOne({email:data.email});
         if(!user){
-            res.json({email:{msg:'E-mail invalido'}});
+            res.json({error:{email:{msg:'E-mail invalido'}}});
             return;
         }
-  
+
         const userPass = await bcrypt.compare(data.password,user.password);
         if(!userPass){
-            res.json({password:{msg:'Senha invalida'}});
+            res.json({error:{password:{msg:'Senha invalida'}}});
             return;
-        }
+        };
 
         
 
@@ -101,7 +101,7 @@ module.exports = {
         if(data.email){
             const emailCheck = await User.findOne({email:data.email});
             if(emailCheck){
-                res.json({error:'E-mail já existe'});
+                res.json({error:{msg:'E-mail já existe'}});
                 return;
             }
 

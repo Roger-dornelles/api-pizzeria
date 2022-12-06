@@ -33,7 +33,7 @@ router.post('/pizzas/add', Auth.private, ProductController.addPizza);
 router.get('/pizzas/search',ProductController.searchPizza);
 
 //editar pizzas
-router.put('/pizza/edit',Auth.private,ProductValidator.editActionPizza, ProductController.editActionPizza);
+router.post('/pizza/edit',Auth.private,ProductValidator.editActionPizza, ProductController.editActionPizza);
 
 //deletar uma pizza
 router.delete('/pizza/delete', Auth.private, ProductController.deleteActionPizza)
@@ -46,9 +46,9 @@ router.post('/drinks/add',Auth.private, ProductController.addDrinks);
 router.get('/drinks/search', ProductController.searchDrinks);
 
 //editar bebida
-router.put('/drinks/adit', Auth.private,ProductValidator.editActionDrinks, ProductController.editActionDrink);
+router.post('/drinks/adit', Auth.private,ProductValidator.editActionDrinks, ProductController.editActionDrink);
 
 //deletar uma bebida
-router.delete('/product/delete', Auth.private, ProductController.delete);
+router.delete('/drink/delete', Auth.private, ProductController.delete);
 
 module.exports = router;
